@@ -1,32 +1,26 @@
+<!-- src/views/Home/index.vue -->
 <template>
-  <div class="card-bg p-6">
-    <h3 class="text-xl font-bold text-white mb-4 section-title">热门艺人</h3>
-    <div class="space-y-4">
-      <!-- 示例艺人项 -->
-      <div class="flex items-center">
-        <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
-          <img src="/assets/images/artist1.jpg" alt="Artist" class="w-full h-full object-cover">
-        </div>
-        <div>
-          <h4 class="text-white font-medium">Eminem</h4>
-          <p class="text-xs text-gray-dark">粉丝 123.4万</p>
-        </div>
+  <div>
+    <!-- 这里可以添加首页内容，原index.html中main标签内为空 -->
+    <!-- 热门话题热度图表 -->
+    <div class="container py-8">
+      <h2 class="text-2xl font-bold mb-6 section-title">热门话题热度</h2>
+      <div class="card-bg p-6">
+        <div id="hotChart"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted } from 'vue'
-import * as echarts from 'echarts'
+import { onMounted, ref } from 'vue'
+import useECharts from '@/hooks/useECharts'
+import useCardEffects from '@/hooks/useCardEffects'
 
-let myChart = null
-
+// 初始化图表
 onMounted(() => {
-  const chartDom = document.getElementById('hotChart')
-  myChart = echarts.init(chartDom)
-
-  const option = {
+  const { initChart } = useECharts()
+  initChart('hotChart', {
     tooltip: {
       trigger: 'axis',
       formatter: '{b0}<br/>热度: {c0}'
@@ -73,7 +67,7 @@ onMounted(() => {
       type: 'bar',
       barWidth: '20px',
       itemStyle: {
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+        color: new window.echarts.graphic.LinearGradient(0, 0, 0, 1, [
           { offset: 0, color: '#FFD700' },
           { offset: 1, color: '#FFA500' }
         ])
@@ -84,24 +78,10 @@ onMounted(() => {
         color: '#FFD700'
       }
     }]
-  }
+  })
 
-  myChart.setOption(option)
-
-  // 响应窗口大小变化
-  window.addEventListener('resize', handleResize)
-})
-
-const handleResize = () => {
-  if (myChart) {
-    myChart.resize()
-  }
-}
-
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
-  if (myChart) {
-    myChart.dispose()
-  }
+  // 初始化卡片悬停效果
+  const { initCardEffects } = useCardEffects()
+  initCardEffects()
 })
 </script>

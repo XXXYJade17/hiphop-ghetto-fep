@@ -1,15 +1,14 @@
+// src/main.js
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
-import './styles/main.css'
-
-// 引入Iconify
-import 'iconify-icon'
+import { createPinia } from 'pinia'
+import './assets/styles/index.css'
+import 'tailwindcss/tailwind.css'
 
 const app = createApp(App)
+const pinia = createPinia()
 
 app.use(router)
-app.use(store)
-
+app.use(pinia)
 app.mount('#app')
