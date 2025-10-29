@@ -14,8 +14,8 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import useECharts from '@/hooks/useECharts'
-import useCardEffects from '@/hooks/useCardEffects'
+import useECharts from '@/hooks/useECharts.js'
+import useCardEffects from '@/hooks/useCardEffects.js'
 
 // 初始化图表
 onMounted(() => {

@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import Header from './components/common/Header.vue'
+import Header from './components/common/AppHeader.vue'
 import Footer from './components/common/Footer.vue'
 import MusicPlayer from './components/common/MusicPlayer.vue'
 </script>

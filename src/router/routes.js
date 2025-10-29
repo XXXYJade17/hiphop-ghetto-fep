@@ -1,4 +1,9 @@
 export default [
+  {
+    path: '/auth',
+    name: 'AuthPage',
+    component: () => import('@/views/AuthPage.vue')
+  }
   // {
   //   path: '/',
   //   name: 'Home',

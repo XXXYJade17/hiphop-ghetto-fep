@@ -38,17 +38,18 @@
       <button type="submit" class="main-btn mb-6 w-full">登录账号</button>
 
       <div class="form-footer">
-        <span>还没有账号? <a href="javascript:;" @click="$emit('switch-to-register')">立即注册</a></span>
+        <span>还没有账号? <a href="javascript:;" @click="$
+        ('switch-to-register')">立即注册</a></span>
       </div>
     </form>
   </div>
 </template>
 
 <script setup>
-import { defineProps, emit } from 'vue';
+import { defineProps } from 'vue';
 
 // 接收父组件参数
-const props = defineProps({
+defineProps({
   form: {
     type: Object,
     required: true
@@ -57,7 +58,7 @@ const props = defineProps({
     type: Object,
     required: true
   }
-});
+})
 
 // 提交表单
 const emit = defineEmits(['submit', 'validate', 'switch-to-register']);

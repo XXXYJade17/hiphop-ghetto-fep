@@ -7,9 +7,6 @@
       :show="toastShow"
     />
 
-    <!-- 顶部导航 -->
-    <Header />
-
     <!-- 主内容区 -->
     <main class="flex-1 flex items-center justify-center py-12">
       <div class="container">
@@ -17,16 +14,16 @@
           <!-- 左侧插图 -->
           <div class="auth-illustration w-1/2 hidden lg:block">
             <div class="rounded-2xl overflow-hidden relative">
-              <img alt="Hip hop culture illustration" class="w-full h-full object-cover rounded-2xl" src="/assets/images/7a50b54f5b5441e5afb9ac6a04d01024.jpg"/>
+              <img alt="Hip hop culture illustration" class="w-full h-full object-cover rounded-2xl" src="https://www.baidu.com/img/flexible/logo/pc/result.png"/>
               <div class="absolute inset-0 bg-gradient-to-tr from-dark to-transparent opacity-70"></div>
               <div class="absolute bottom-8 left-8 right-8">
                 <h2 class="text-3xl font-bold text-white mb-4 font-['Exo 2']">加入嘻哈社区</h2>
                 <p class="text-gray-custom mb-6">与全球说唱爱好者一起分享、发现和创作最棒的嘻哈音乐</p>
                 <div class="flex items-center space-x-4">
                   <div class="flex -space-x-2">
-                    <img alt="Community member" class="w-10 h-10 rounded-full border-2 border-dark" src="/assets/images/b706d8b320fa453ab34ba7f3fdf0e64c.jpg"/>
-                    <img alt="Community member" class="w-10 h-10 rounded-full border-2 border-dark" src="/assets/images/b3363c9f043a4b68bdd4e7737c41ad18.jpg"/>
-                    <img alt="Community member" class="w-10 h-10 rounded-full border-2 border-dark" src="/assets/images/cbdf81ecde254895a60b19ef72123c23.jpg"/>
+                    <img alt="Community member" class="w-10 h-10 rounded-full border-2 border-dark" src="https://www.baidu.com/img/flexible/logo/pc/result.png"/>
+                    <img alt="Community member" class="w-10 h-10 rounded-full border-2 border-dark" src="https://www.baidu.com/img/flexible/logo/pc/result.png"/>
+                    <img alt="Community member" class="w-10 h-10 rounded-full border-2 border-dark" src="https://www.baidu.com/img/flexible/logo/pc/result.png"/>
                   </div>
                   <p class="text-sm text-gray-dark">已有 <span class="text-primary">10,000+</span> 嘻哈爱好者加入</p>
                 </div>
@@ -90,11 +87,11 @@
 
 <script setup>
 import { ref } from 'vue';
-import Header from '../components/layout/Header.vue';
+import Header from '../components/common/AppHeader.vue';
 import Footer from '../components/layout/Footer.vue';
 import LoginForm from '../components/auth/LoginForm.vue';
 import RegisterForm from '../components/auth/RegisterForm.vue';
-import Toast from '../components/common/Toast.vue';
+import Toast from '../components/common/MessageToast.vue';
 import { useAuth } from '../composables/useAuth';
 
 // 表单切换状态
