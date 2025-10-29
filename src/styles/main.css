@@ -1,0 +1,79 @@
+/* 导入字体 */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700;800&family=Montserrat:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 全局样式 */
+* {
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #0A0A0A;
+  color: #CCCCCC;
+  overflow-x: hidden;
+}
+
+/* 自定义工具类 */
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+
+  .tab-active {
+    @apply border-b-2 border-primary text-white !important;
+  }
+
+  .card-bg {
+    @apply bg-dark-light rounded-xl shadow-lg shadow-black/50;
+  }
+
+  .hover-float {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50;
+  }
+
+  .main-btn {
+    @apply bg-gradient-to-r from-primary to-secondary rounded-lg h-12 text-dark font-semibold transition-all;
+  }
+
+  .outline-btn {
+    @apply border border-primary rounded-lg text-primary transition-all hover:bg-primary/10;
+  }
+
+  .hot-tag {
+    @apply bg-accent/30 rounded-md px-2 py-0.5 text-accent/90 text-sm;
+  }
+
+  .gold-tag {
+    @apply bg-primary/20 rounded-md px-2 py-0.5 text-primary text-sm;
+  }
+
+  .artist-name {
+    @apply italic relative inline-block;
+  }
+
+  .post-highlight {
+    @apply border-l-4 border-primary;
+  }
+
+  .player {
+    @apply fixed bottom-0 left-0 right-0 bg-dark-light/95 backdrop-blur-md z-50;
+  }
+
+  .section-title {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
