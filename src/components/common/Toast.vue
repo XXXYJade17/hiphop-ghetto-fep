@@ -11,7 +11,7 @@
 import { defineProps } from 'vue';
 
 // 接收提示参数
-const props = defineProps({
+defineProps({
   message: {
     type: String,
     required: true
@@ -29,7 +29,7 @@ const props = defineProps({
     type: Object,
     default: () => ({})
   }
-});
+})
 </script>
 
 <style scoped>
