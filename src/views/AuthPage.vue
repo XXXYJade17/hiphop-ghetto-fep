@@ -87,7 +87,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import Header from '../components/common/AppHeader.vue';
 import Footer from '../components/layout/Footer.vue';
 import LoginForm from '../components/auth/LoginForm.vue';
 import RegisterForm from '../components/auth/RegisterForm.vue';
