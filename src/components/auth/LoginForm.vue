@@ -9,7 +9,8 @@
         <input
           class="input-field"
           id="login-account"
-          v-model="form.account"
+          :value="form.account"
+          @input="$emit('update:form', { ...form, account: $event.target.value })"
           placeholder="输入用户名、手机号或邮箱"
           type="text"
           required
@@ -23,48 +24,58 @@
         <input
           class="input-field"
           id="login-password"
-          v-model="form.password"
+          :value="form.password"
+          @input="$emit('update:form', { ...form, password: $event.target.value })"
           placeholder="输入密码"
           type="password"
           required
           @blur="$emit('validate', 'password')"
         />
-        <div class="error-message" :class="errors.password ? 'show' : ''">{{ errors.password }}</div>
+        <div class="error-message" :class="errors.password ? 'show' : ''">
+          {{ errors.password }}
+        </div>
         <div class="forgot-password">
           <a href="#">忘记密码?</a>
         </div>
       </div>
 
-      <button type="submit" class="main-btn mb-6 w-full">登录账号</button>
+      <button type="submit" class="main-btn mb-6 w-full" :disabled="loading">
+        {{ loading ? '登录中...' : '登录账号' }}
+      </button>
 
       <div class="form-footer">
-        <span>还没有账号? <a href="javascript:;" @click="$
-        ('switch-to-register')">立即注册</a></span>
+        <span
+          >还没有账号?
+          <a href="javascript:;" @click="$emit('switch-to-register')">立即注册</a></span
+        >
       </div>
     </form>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-
 // 接收父组件参数
 defineProps({
   form: {
     type: Object,
-    required: true
+    required: true,
   },
   errors: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
+  loading: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 // 提交表单
-const emit = defineEmits(['submit', 'validate', 'switch-to-register']);
+const emit = defineEmits(['submit', 'validate', 'switch-to-register', 'update:form'])
+
 const handleSubmit = () => {
-  emit('submit');
-};
+  emit('submit')
+}
 </script>
 
 <style scoped>
@@ -81,21 +92,26 @@ label {
 
 .input-field {
   width: 100%;
-  background: #1F1F1F;
+  background: #1f1f1f;
   border: 1px solid #333;
   border-radius: 6px;
   padding: 12px 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
 }
 
 .input-field:focus {
-  border-color: #FFD700;
+  border-color: #ffd700;
   outline: none;
 }
 
+.input-field:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .error-message {
-  color: #DC143C;
+  color: #dc143c;
   font-size: 12px;
   margin-top: 4px;
   display: none;
@@ -112,7 +128,7 @@ label {
 }
 
 .forgot-password a {
-  color: #FFD700;
+  color: #ffd700;
   text-decoration: none;
 }
 
@@ -128,11 +144,16 @@ label {
 }
 
 .form-footer a {
-  color: #FFD700;
+  color: #ffd700;
   text-decoration: none;
 }
 
 .form-footer a:hover {
   text-decoration: underline;
+}
+
+.main-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 </style>

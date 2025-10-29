@@ -2,13 +2,13 @@ export default [
   {
     path: '/auth',
     name: 'AuthPage',
-    component: () => import('@/views/AuthPage.vue')
-  }
-  // {
-  //   path: '/',
-  //   name: 'Home',
-  //   component: () => import('@/views/Home/index.vue')
-  // },
+    component: () => import('@/views/AuthPage.vue'),
+  },
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/views/index.vue'),
+  },
   // {
   //   path: '/recommend',
   //   name: 'Recommend',
